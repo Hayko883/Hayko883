@@ -6,7 +6,7 @@
         <h2 class="text-[32px] font-bold">$0.00 <span class="text-[15px] font-normal">/hour</span></h2>
         <p class="text-[#767676] dark:text-white mt-[9px] leading-6">For most businesses that want to optimize web queries</p>
       </div>
-      <div class="flex ">
+      <div class=" ">
         <ul class="capitalize">
           <li class="flex mb-4 mt-[21px]">
             <svg class="mr-[15px]" width="25" height="24" viewBox="0 0 25 24" fill="none"

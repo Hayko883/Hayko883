@@ -7,11 +7,18 @@
 </template>
 
 <script setup>
-
 import PersonComponent from "@/components/PersonComponent.vue";
 import MainComponent from "@/components/MainComponent.vue";
 import RightMenuComponent from "@/components/RightMenuComponent.vue";
+import {onMounted} from "vue";
+import {useUserStore} from "@/store/userStore";
 
+const userStore = useUserStore()
+
+onMounted(() => {
+
+  userStore.getUser()
+})
 </script>
 
 <style scoped>

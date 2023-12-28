@@ -2,8 +2,9 @@
   <div class="bg-white dark:bg-[#242526] ">
     <div class="p-[50px_45px_25px_40px] mx-auto dark:bg-[#242526] capitalize">
       <img class=" m-auto " src="../assets/icons/profile.png" alt="">
-      <h4 class="mt-[31px] text-[#2B2B2B] font-medium text-[18px] leading-[123.6%] flex justify-center dark:text-white">Rayan Adlardard</h4>
-      <p class="user_profession_text flex justify-center">Font-end Developer</p>
+      <h4 class="mt-[31px] text-[#2B2B2B] font-medium text-[18px] leading-[123.6%] flex justify-center dark:text-white">
+        {{ user?.name }}</h4>
+      <p class="user_profession_text flex justify-center">{{ user?.profession }}</p>
       <div class="flex justify-around items-center xl:flex-nowrap lg:flex-wrap md:flex-wrap sm:flex-wrap flex-wrap mt-[10px] mb-[25px]">
         <a class="bg-[#FFB400] flex justify-center items-center w-6 h-6 rounded-full" href="">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -86,7 +87,7 @@
       <hr>
       <PersonInfo/>
       <LanguagesComponent/>
-      <SkillsComponent/>
+<!--      <SkillsComponent/>-->
       <ExtraComponent/>
     </div>
 
@@ -96,8 +97,15 @@
 <script setup>
   import PersonInfo from "@/components/person/PersonInfo.vue";
   import LanguagesComponent from "@/components/person/LanguagesComponent.vue";
-  import SkillsComponent from "@/components/person/SkillsComponent.vue";
+  // import SkillsComponent from "@/components/person/SkillsComponent.vue";
   import ExtraComponent from "@/components/person/ExtraComponent.vue";
+  import {useUserStore} from "@/store/userStore";
+  const userStore = useUserStore();
+  import {computed} from "vue";
+  const user = computed(() => {
+    console.log(user,'asa')
+    return userStore.user
+  })
 </script>
 
 <style scoped>
