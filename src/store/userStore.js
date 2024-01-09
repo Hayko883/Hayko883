@@ -5,13 +5,15 @@ import router from "@/js/router";
 export const useUserStore = defineStore('userStore', {
     state: () => ({
         user: {},
+        isAuthenticated: false,
     }),
     actions: {
         getUser() {
             return new Promise((resolve, reject) => {
                 axios.get(`http://127.0.0.1:8000/api/user`,{ headers:{Authorization: 'Bearer ' + localStorage.getItem('token')}}).then(response => {
-                    const data = response.data;
+                    const data = response.data.data
                     this.user = data;
+                    console.log(this.user.language,'ccccc')
                     // resolve(this.user)
                 }).catch((e) => {
                     reject(e);
@@ -40,6 +42,7 @@ export const useUserStore = defineStore('userStore', {
                     this.user = data.data
                     console.log(this.user,'tokeeeeeenn')
                     if (data.success){
+                        this.isAuthenticated = true
                         localStorage.setItem('token',data.token)
                         router.push({name: 'Home'})
                     }
@@ -49,7 +52,9 @@ export const useUserStore = defineStore('userStore', {
         },
       async logout() {
             this.user = null;
+          this.isAuthenticated = false
             localStorage.removeItem('token');
+
             router.push('/');
         }
     }
