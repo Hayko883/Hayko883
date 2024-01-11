@@ -100,8 +100,9 @@
   // import SkillsComponent from "@/components/person/SkillsComponent.vue";
   import ExtraComponent from "@/components/person/ExtraComponent.vue";
   import {useUserStore} from "@/store/userStore";
-  const userStore = useUserStore();
   import {computed} from "vue";
+
+  const userStore = useUserStore();
   const user = computed(() => {
     console.log(user,'asa')
     return userStore.user
