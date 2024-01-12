@@ -1,6 +1,5 @@
 import {createRouter, createWebHistory} from "vue-router";
 
-
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -14,13 +13,17 @@ const router = createRouter({
             name: 'SignIn',
             path: '/',
             component: () => import("@/components/SignIn.vue")
-
         },
-
         {
             name: "LanguageTest",
-            path: "/user/languageTest",
+            path: "/user/:item",
             component: () => import("@/components/person/LanguageTest.vue"),
+            meta: {requiresAuth: true},
+        },
+        {
+            name: "SkillTest",
+            path: "/user/:type",
+            component: () => import("@/components/person/SkillTest.vue"),
             meta: {requiresAuth: true},
         },
         {
@@ -30,5 +33,4 @@ const router = createRouter({
         }
     ]
 });
-
 export default router

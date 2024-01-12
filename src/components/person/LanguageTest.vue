@@ -5,10 +5,10 @@
           class=" bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
           <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-            Please take the language test
+            Please take the {{ item }} test
           </h1>
-          <form @submit.prevent="submitForm" class="space-y-4 md:space-y-6" action="#">
-            <div v-for="language in languages" :key="language.id" class="grid grid-cols-2 items-center">
+          <form @submit.prevent="submitForm" class="space-y-4 md:space-y-6" action="#" >
+            <div v-if="item" v-for="language in languages" :key="language.id" class="grid grid-cols-2 items-center">
               <label :for="language.id"
                      class="block mr-2 text-sm font-medium text-gray-900 dark:text-white">{{ language.name }}</label>
               <input v-model="percent[language.id]" type="number" :name="language.id" :id="language.id" min="0"
@@ -28,37 +28,52 @@
 </template>
 
 <script setup>
-import { onMounted, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 import {useUserStore} from "@/store/userStore";
+import {useRoute} from "vue-router";
 
 const userStore = useUserStore();
 const languages = ref([]);
+const skills = ref([])
 const percent = ref({});
+const route = useRoute()
+const item =  route.params.item
 
 onMounted(async () => {
-  await userStore.getLanguagesName();
-  const percentLanguage = userStore.user.language
+  if (item === "Languages"){
+    await userStore.getLanguagesName();
+    const percentLanguage = userStore.user.language
 
-  const percentData = []
-  const pivots = percentLanguage?.map(e => e.pivot)
-  Object.values(pivots).forEach((value) => {
-    percentData[value.language_id] = value.percent
-  });
-  languages.value = userStore.languages
-  userStore.languages.forEach(language => {
-    if (percentData[language.id]) {
-      percent.value[language.id] = percentData[language.id];
-    }
-  })
-});
-const submitForm = async () => {
-  console.log(percent.value, 'asdasd')
-  if (!userStore.user.language){
-    await  userStore.setPercentLanguages(percent.value)
+    const percentData = []
+    const pivots = percentLanguage?.map(e => e.pivot)
+    Object.values(pivots).forEach((value) => {
+      percentData[value.language_id] = value.percent
+    });
+    languages.value = userStore.languages
+    userStore.languages.forEach(language => {
+      if (percentData[language.id]) {
+        percent.value[language.id] = percentData[language.id];
+      }
+    })
   }else
-    await userStore.updatePercentLanguages(percent.value)
+    if (item === "Skills"){
+      await userStore.getSkillsName()
+      skills.value = userStore.skills;
+      skills.value.forEach((skill) => {
+        percent.value[skill.id] = 0;
+      });
+    }
+})
+  const submitForm = async () => {
+    console.log(percent.value, 'asdasd')
+    if (!userStore.user.language) {
+      await userStore.setPercentLanguages(percent.value)
+    } else
+      await userStore.updatePercentLanguages(percent.value)
+
 
 }
+
 
 // const userStore = useUserStore();
 // const languages = ref([]);

@@ -6,6 +6,7 @@ export const useUserStore = defineStore('userStore', {
     state: () => ({
         user: {},
         languages: [],
+        skills: [],
         isAuthenticated: false,
     }),
     actions: {
@@ -88,6 +89,15 @@ export const useUserStore = defineStore('userStore', {
                         }
                         resolve(response)
                     }).catch((e)=>reject(e))
+            })
+        },
+        async getSkillsName() {
+            return new Promise((resolve, reject) => {
+                axios.get('http://127.0.0.1:8000/api/skills')
+                    .then(response => {
+                        this.skills = response.data.skill
+                        resolve(this.skills)
+                    }).catch((e) => reject(e))
             })
         },
     }

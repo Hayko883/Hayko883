@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <PersonComponent class="xl:w-[21.18%] lg:w-[25%] md:w-[25.18%] sm:w-[21.18%]"/>
+    <PersonComponent class="xl:w-[21.18%] lg:w-[25%] w md:w-[25.18%] sm:w-[21.18%] "/>
     <MainComponent class="w-[67.36%]"/>
     <RightMenuComponent class="w-[7.5%]"/>
   </div>
@@ -16,7 +16,6 @@ import {useUserStore} from "@/store/userStore";
 const userStore = useUserStore()
 
 onMounted(() => {
-
   userStore.getUser()
 })
 </script>

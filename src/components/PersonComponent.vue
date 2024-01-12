@@ -87,7 +87,7 @@
       <hr>
       <PersonInfo/>
       <LanguagesComponent/>
-<!--      <SkillsComponent/>-->
+      <SkillsComponent/>
       <ExtraComponent/>
     </div>
 
@@ -97,7 +97,7 @@
 <script setup>
   import PersonInfo from "@/components/person/PersonInfo.vue";
   import LanguagesComponent from "@/components/person/LanguagesComponent.vue";
-  // import SkillsComponent from "@/components/person/SkillsComponent.vue";
+  import SkillsComponent from "@/components/person/SkillsComponent.vue";
   import ExtraComponent from "@/components/person/ExtraComponent.vue";
   import {useUserStore} from "@/store/userStore";
   import {computed} from "vue";
