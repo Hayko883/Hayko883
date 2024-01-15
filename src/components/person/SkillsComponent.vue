@@ -1,7 +1,7 @@
 <template>
   <div class="mt-6">
     <router-link :to="{name:'LanguageTest',params:{item: 'Skills'}}">
-      <h4 class="text-[#2B2B2B] text-[18px] mb-[15px] font-medium leading-6 dark:text-white">Skills</h4>
+      <h4 class="text-[#2B2B2B] text-[18px] mb-[15px] font-medium leading-6 dark:text-white">Click Skills Test</h4>
     </router-link>
     <div v-for="skill in skills" :key="skill.id" class="pb-6">
       <div class="flex justify-between text-[#767676] text-[15px] leading-6 capitalize">

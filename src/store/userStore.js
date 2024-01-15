@@ -69,7 +69,7 @@ export const useUserStore = defineStore('userStore', {
         },
         async setPercentLanguages(languageData){
             return new Promise((resolve,reject)=> {
-                axios.post('http://127.0.0.1:8000/api/storePercent', {percent: languageData},
+                axios.post('http://127.0.0.1:8000/api/storePercentLanguages', {percent: languageData},
                     {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}})
                     .then(response =>{
                         if (response.data.success){
@@ -81,7 +81,7 @@ export const useUserStore = defineStore('userStore', {
         },
         async updatePercentLanguages(languageData){
             return new Promise((resolve,reject)=> {
-                axios.put('http://127.0.0.1:8000/api/updatePercent', {percent: languageData},
+                axios.put('http://127.0.0.1:8000/api/updatePercentLanguages', {percent: languageData},
                     {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}})
                     .then(response =>{
                         if (response){
@@ -98,6 +98,30 @@ export const useUserStore = defineStore('userStore', {
                         this.skills = response.data.skill
                         resolve(this.skills)
                     }).catch((e) => reject(e))
+            })
+        },
+        async setPercentSkills(skillData){
+            return new Promise((resolve,reject)=> {
+                axios.post('http://127.0.0.1:8000/api/storePercentSkills', {percent: skillData},
+                    {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}})
+                    .then(response =>{
+                        if (response.data.success){
+                            router.push({name: 'Home'})
+                        }
+                        resolve(response)
+                    }).catch((e)=>reject(e))
+            })
+        },
+        async updatePercentSkills(skillData){
+            return new Promise((resolve,reject)=> {
+                axios.put('http://127.0.0.1:8000/api/updatePercentSkills', {percent: skillData},
+                    {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}})
+                    .then(response =>{
+                        if (response){
+                            router.push({name: 'Home'})
+                        }
+                        resolve(response)
+                    }).catch((e)=>reject(e))
             })
         },
     }

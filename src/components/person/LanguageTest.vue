@@ -8,10 +8,10 @@
             Please take the {{ item }} test
           </h1>
           <form @submit.prevent="submitForm" class="space-y-4 md:space-y-6" action="#" >
-            <div v-if="item" v-for="language in languages" :key="language.id" class="grid grid-cols-2 items-center">
-              <label :for="language.id"
-                     class="block mr-2 text-sm font-medium text-gray-900 dark:text-white">{{ language.name }}</label>
-              <input v-model="percent[language.id]" type="number" :name="language.id" :id="language.id" min="0"
+            <div v-if="item" v-for="itemData in items" :key="itemData.id" class="grid grid-cols-2 items-center">
+              <label :for="itemData.id"
+                     class="block mr-2 text-sm font-medium text-gray-900 dark:text-white">{{ itemData.name }}</label>
+              <input v-model="percent[itemData.id]" type="number" :name="itemData.id" :id="itemData.id" min="0"
                      max="100"
                      class="pl-2 bg-gray-50 border border-gray-700 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block  p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                      placeholder="Percent" required="">
@@ -33,45 +33,62 @@ import {useUserStore} from "@/store/userStore";
 import {useRoute} from "vue-router";
 
 const userStore = useUserStore();
-const languages = ref([]);
-const skills = ref([])
+const items = ref([]);
 const percent = ref({});
 const route = useRoute()
 const item =  route.params.item
+const percentData = ref([])
 
 onMounted(async () => {
   if (item === "Languages"){
     await userStore.getLanguagesName();
     const percentLanguage = userStore.user.language
 
-    const percentData = []
     const pivots = percentLanguage?.map(e => e.pivot)
     Object.values(pivots).forEach((value) => {
       percentData[value.language_id] = value.percent
     });
-    languages.value = userStore.languages
-    userStore.languages.forEach(language => {
-      if (percentData[language.id]) {
-        percent.value[language.id] = percentData[language.id];
+
+    items.value = userStore.languages
+    items.value.forEach(itemData => {
+      if (percentData[itemData.id]) {
+        percent.value[itemData.id] = percentData[itemData.id];
       }
     })
   }else
     if (item === "Skills"){
       await userStore.getSkillsName()
-      skills.value = userStore.skills;
-      skills.value.forEach((skill) => {
-        percent.value[skill.id] = 0;
+      const percentSkill = userStore.user.skill
+
+      console.log(userStore.user.skill,'sksssss')
+
+      const pivots = percentSkill?.map(e => e.pivot)
+      Object.values(pivots).forEach((value) => {
+        percentData[value.skill_id] = value.percent
+      });
+      items.value = userStore.skills;
+      items.value.forEach(itemData => {
+        if (percentData[itemData.id]) {
+          percent.value[itemData.id] = percentData[itemData.id];
+        }
       });
     }
 })
   const submitForm = async () => {
     console.log(percent.value, 'asdasd')
-    if (!userStore.user.language) {
-      await userStore.setPercentLanguages(percent.value)
-    } else
-      await userStore.updatePercentLanguages(percent.value)
+    if (item === "Languages") {
+      if (userStore.user.language.length > 0) {
+        await userStore.updatePercentLanguages(percent.value)
+      } else
+        await userStore.setPercentLanguages(percent.value)
 
-
+    }else
+    if (item === "Skills"){
+      if (userStore.user.skill.length > 0) {
+        await userStore.updatePercentSkills(percent.value)
+      } else
+        await userStore.setPercentSkills(percent.value)
+    }
 }
 
 
