@@ -1,5 +1,6 @@
 import {defineStore} from "pinia";
 import axios from "axios";
+import router from "@/js/router";
 
 export const useAdminStore = defineStore('adminStore', {
     state: () => ({
@@ -44,6 +45,20 @@ export const useAdminStore = defineStore('adminStore', {
                     }).catch((e) => {
                     reject(e);
                 });
+            })
+        },
+        async createUser(formData) {
+            return new Promise((resolve, reject) => {
+                axios.post('http://127.0.0.1:8000/api/admin/create', formData,
+                    {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}})
+                    .then(res => {
+                    const data = res.data
+                    this.user = data.data
+                    if (data.success) {
+                        router.push({name: 'AllUsers'})
+                    }
+                    resolve()
+                }).catch(e => reject(e))
             })
         },
     }

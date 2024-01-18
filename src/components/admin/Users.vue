@@ -17,10 +17,12 @@
                 </svg>
                 CSV
               </button>
-              <button
-                  class="flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white focus:outline-none focus:ring hover:bg-blue-700">
-                Create User
-              </button>
+              <router-link to="/admin/createUser">
+                <button
+                    class="flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white focus:outline-none focus:ring hover:bg-blue-700">
+                  Create User
+                </button>
+              </router-link>
             </div>
           </div>
         </div>
@@ -53,7 +55,8 @@
                   </div>
                 </td>
                 <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                  <p v-if="user.role === 1" class="whitespace-no-wrap">Administrator</p>
+                  <p v-if="user.role === 1" class="whitespace-no-wrap">SuperAdministrator</p>
+                  <p v-else-if="user.role === 2" class="whitespace-no-wrap">Administrator</p>
                   <p v-else class="whitespace-no-wrap">User</p>
                 </td>
                 <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
