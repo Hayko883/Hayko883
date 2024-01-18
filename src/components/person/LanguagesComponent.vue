@@ -1,7 +1,7 @@
 <template>
   <div class="mt-6 capitalize">
-    <router-link :to="{name:'LanguageTest',params:{item: 'Languages'}}"><h4
-        class="text-[#2B2B2B] text-[18px] mb-[15px] font-medium leading-6 dark:text-white">Click Languages test</h4></router-link>
+    <router-link :to="{name:'LanguageTest',params:{item: 'Languages'}}">
+      <h4 class="text-[#2B2B2B] text-[18px] mb-[15px] font-medium leading-6 dark:text-white">Click Languages test</h4></router-link>
     <div v-for="language in languages" :key="language.id" class="pb-6">
       <div class="flex justify-between text-[#767676] text-[15px] leading-6 capitalize">
         <p>{{ language?.name}}</p>

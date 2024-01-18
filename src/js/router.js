@@ -4,6 +4,21 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         {
+            name: 'Admin',
+            path: '/admin',
+            component: () => import("@/components/admin/Home.vue"),
+        },
+        {
+            name: "AllUsers",
+            path: "/admin/users",
+            component: () => import("@/components/admin/Users.vue")
+        },
+        {
+            name: "EditUser",
+            path: "/admin/user/:id",
+            component: () => import("@/components/admin/EditUser.vue")
+        },
+        {
             name: 'Home',
             path: '/user',
             component: () => import("@/components/HomeComponent.vue"),

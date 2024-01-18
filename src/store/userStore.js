@@ -42,11 +42,15 @@ export const useUserStore = defineStore('userStore', {
                 axios.post('http://127.0.0.1:8000/api/auth/login', formData,).then(res => {
                     const data = res.data
                     this.user = data.data
-                    console.log(this.user, 'tokeeeeeenn')
                     if (data.success) {
-                        this.isAuthenticated = true
+                        if(data.data.role === 1){
                         localStorage.setItem('token', data.token)
-                        router.push({name: 'Home'})
+                        router.push({name: 'Admin'})
+                        }else {
+                            this.isAuthenticated = true
+                            localStorage.setItem('token', data.token)
+                            router.push({name: 'Home'})
+                        }
                     }
                     resolve()
                 }).catch(e => reject(e))
