@@ -10,12 +10,27 @@ export const useUserStore = defineStore('userStore', {
         isAuthenticated: false,
     }),
     actions: {
+        getUserId(userId) {
+            return new Promise((resolve, reject) => {
+                axios.get(`http://127.0.0.1:8000/api/user/${userId}`,
+                    {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}})
+                    .then(response => {
+                        const data = response.data.data
+                        this.user = data;
+                        console.log(data, 'ccccc')
+                        resolve(this.user)
+                    }).catch((e) => {
+                    reject(e);
+                });
+            })
+        },
         getUser() {
             return new Promise((resolve, reject) => {
-                axios.get(`http://127.0.0.1:8000/api/user`, {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}}).then(response => {
+                axios.get(`http://127.0.0.1:8000/api/user`,
+                    {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}})
+                    .then(response => {
                     const data = response.data.data
                     this.user = data;
-                    console.log(this.user.language, 'ccccc')
                     resolve(this.user)
                 }).catch((e) => {
                     reject(e);
@@ -49,7 +64,7 @@ export const useUserStore = defineStore('userStore', {
                         }else {
                             this.isAuthenticated = true
                             localStorage.setItem('token', data.token)
-                            router.push({name: 'Home'})
+                            router.push({name: 'Home', params: {id : this.user.id}})
                         }
                     }
                     resolve()
@@ -64,7 +79,8 @@ export const useUserStore = defineStore('userStore', {
         },
         async getLanguagesName() {
             return new Promise((resolve, reject) => {
-                axios.get('http://127.0.0.1:8000/api/languages')
+                axios.get('http://127.0.0.1:8000/api/languages',
+                    {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}})
                     .then(response => {
                         this.languages = response.data.languages
                         resolve(this.languages)
@@ -77,7 +93,7 @@ export const useUserStore = defineStore('userStore', {
                     {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}})
                     .then(response =>{
                         if (response.data.success){
-                            router.push({name: 'Home'})
+                            router.push({name: 'Home', params: {id : this.user.id}})
                         }
                         resolve(response)
                     }).catch((e)=>reject(e))
@@ -89,7 +105,7 @@ export const useUserStore = defineStore('userStore', {
                     {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}})
                     .then(response =>{
                         if (response){
-                            router.push({name: 'Home'})
+                            router.push({name: 'Home', params: {id : this.user.id}})
                         }
                         resolve(response)
                     }).catch((e)=>reject(e))
@@ -110,7 +126,7 @@ export const useUserStore = defineStore('userStore', {
                     {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}})
                     .then(response =>{
                         if (response.data.success){
-                            router.push({name: 'Home'})
+                            router.push({name: 'Home', params: {id : this.user.id}})
                         }
                         resolve(response)
                     }).catch((e)=>reject(e))
@@ -122,7 +138,7 @@ export const useUserStore = defineStore('userStore', {
                     {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}})
                     .then(response =>{
                         if (response){
-                            router.push({name: 'Home'})
+                            router.push({name: 'Home', params: {id : this.user.id}})
                         }
                         resolve(response)
                     }).catch((e)=>reject(e))

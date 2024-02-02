@@ -23,6 +23,15 @@
                        placeholder="name@company.com" required="">
               </div>
               <div>
+                <label for="age" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
+                <select v-model="user.role" type="number" name="age" id="age"
+                        class="bg-gray-50 border border-gray-300 hover:border-red-900 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required="">
+                  <option selected value="2">Admin</option>
+                  <option value="3">User</option>
+                </select>
+              </div>
+              <div>
                 <label for="age" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age</label>
                 <input v-model="user.age" type="number" name="age" id="age"
                        class="bg-gray-50 border border-gray-300 hover:border-red-900 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -72,14 +81,15 @@ import {useAdminStore} from "@/store/adminStore";
 const route = useRoute()
 const adminStore = useAdminStore()
 const userId = route.params.id
-console.log(userId,'aaaaaaa')
 const user = ref({})
 
 onMounted(async () => {
   await adminStore.getUserId(userId)
   user.value = adminStore.user
-  console.log(user,'ediiiit')
 })
+const submitForm = async () => {
+  await adminStore.updateUser(userId,user.value)
+}
 
 </script>
 

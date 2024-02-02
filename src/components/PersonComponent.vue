@@ -104,7 +104,6 @@
 
   const userStore = useUserStore();
   const user = computed(() => {
-    console.log(user,'asa')
     return userStore.user
   })
 </script>

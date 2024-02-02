@@ -12,12 +12,13 @@ import MainComponent from "@/components/MainComponent.vue";
 import RightMenuComponent from "@/components/RightMenuComponent.vue";
 import {onMounted} from "vue";
 import {useUserStore} from "@/store/userStore";
+import {useAdminStore} from "@/store/adminStore";
 import {useRoute} from "vue-router";
-const route = useRoute()
-const userStore = useUserStore()
 
+const userStore = useUserStore()
+const route = useRoute()
 onMounted(() => {
-  userStore.getUser(route.params.id)
+  userStore.getUserId(route.params.id)
 })
 </script>
 

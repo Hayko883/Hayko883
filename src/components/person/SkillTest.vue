@@ -37,11 +37,11 @@ const skills = ref([])
 const percent = ref({})
 
 onMounted(async ()=>{
-  await userStore.getSkillsName()
-  skills.value = userStore.skills;
-  skills.value.forEach((skill) => {
-    percent.value[skill.id] = 0;
-  });
+  // await userStore.getSkillsName()
+  // skills.value = userStore.skills;
+  // skills.value.forEach((skill) => {
+  //   percent.value[skill.id] = 0;
+  // });
 })
 </script>
 

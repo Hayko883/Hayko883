@@ -24,7 +24,6 @@ import {computed} from "vue";
 
 const userStore = useUserStore();
 const user = computed(() => {
-  console.log(userStore.user,'aaaaaaaaaaaaaaa');
   return userStore.user
 })
 // export default {

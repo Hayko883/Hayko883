@@ -61,5 +61,17 @@ export const useAdminStore = defineStore('adminStore', {
                 }).catch(e => reject(e))
             })
         },
+        async updateUser(userId,updateForm){
+            return new Promise((resolve,reject)=> {
+                axios.put(`http://127.0.0.1:8000/api/admin/update/${userId}`, updateForm,
+                    {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}})
+                    .then(response =>{
+                        if (response.data.success) {
+                            router.push({name: 'AllUsers'})
+                        }
+                        resolve(response)
+                    }).catch((e)=>reject(e))
+            })
+        },
     }
 })

@@ -24,8 +24,14 @@ const router = createRouter({
             component: () => import("@/components/admin/CreateUser.vue")
         },
         {
+            name: 'ShowUser',
+            path: '/admin/user/show/:id',
+            component: () => import("@/components/admin/showUser/HomeUser.vue"),
+            meta: { requiresAuth: true },
+        },
+        {
             name: 'Home',
-            path: '/user',
+            path: '/user/:id',
             component: () => import("@/components/HomeComponent.vue"),
             meta: { requiresAuth: true },
         },
@@ -36,13 +42,13 @@ const router = createRouter({
         },
         {
             name: "LanguageTest",
-            path: "/user/:item",
+            path: "/user/language/:item",
             component: () => import("@/components/person/LanguageTest.vue"),
             meta: {requiresAuth: true},
         },
         {
             name: "SkillTest",
-            path: "/user/:type",
+            path: "/user/skill/:type",
             component: () => import("@/components/person/SkillTest.vue"),
             meta: {requiresAuth: true},
         },

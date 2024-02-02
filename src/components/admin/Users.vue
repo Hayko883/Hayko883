@@ -40,7 +40,7 @@
               </tr>
               </thead>
               <tbody class="text-gray-500">
-              <tr v-for="user in users">
+              <tr v-for="user in users" :key="user.id">
                 <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                   <p class="whitespace-no-wrap">{{ user.id }}</p>
                 </td>
@@ -68,10 +68,12 @@
                 </td>
                 <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                   <div class="flex gap-x-2">
+                    <router-link :to="{name:'ShowUser',params:{id: user.id}}">
                     <button
                         class="flex items-center gap-2 rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white focus:outline-none focus:ring hover:bg-green-700">
                       Show
                     </button>
+                    </router-link>
                     <router-link :to="{name:'EditUser',params:{id: user.id}}">
                       <button
                           class="flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white focus:outline-none focus:ring hover:bg-blue-700">
@@ -79,8 +81,8 @@
                       </button>
                     </router-link>
                     <button v-if="user.role !== 1"
-                        @click="deleteUser(user.id)"
-                        class="flex items-center gap-2 rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white focus:outline-none focus:ring hover:bg-red-700">
+                            @click="deleteUser(user.id)"
+                            class="flex items-center gap-2 rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white focus:outline-none focus:ring hover:bg-red-700">
                       Delete
                     </button>
 
@@ -126,7 +128,6 @@ const deleteUser = async (userId) => {
   if (!confirmDelete) {
     return;
   }
-
   try {
     // Call the deleteUser method from the store
     await adminStore.deleteUser(userId);
@@ -135,8 +136,6 @@ const deleteUser = async (userId) => {
     console.error("Error deleting user:", error.message);
   }
 };
-
-
 </script>
 
 <style scoped>

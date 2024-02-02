@@ -15,9 +15,9 @@
         <li>Branding</li>
       </ul>
     </div>
-    <div class="mt-[50px] flex gap-y-5 xl:justify-between lg:justify-around md:justify-around flex-wrap">
-      <div class="relative">
-        <div class="bg-[#ffb400] absolute w-full h-full  items-center flex justify-center opacity-95">
+    <div  class="mt-[50px] flex gap-y-5 xl:justify-between lg:justify-around md:justify-around flex-wrap">
+      <div v-for="(image, index) in images" :key="index" @click="handleImageClick(index)" class="relative">
+        <div v-if="selectedImage === index"  class="bg-[#ffb400] absolute w-full h-full  items-center flex justify-center opacity-95">
           <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_2_913)">
               <path
@@ -31,37 +31,32 @@
             </defs>
           </svg>
         </div>
-        <img class="xl:w-full lg:w-full md:w-fit" src="@/assets/icons/image(1).png" alt="">
+        <img class="xl:w-full lg:w-full md:w-fit" :src=image.fileName :alt=image.alt>
       </div>
-      <div>
-        <img class="xl:w-full" src="@/assets/icons/image.png" alt="">
-      </div>
-      <div>
-        <img class="xl:w-full" src="@/assets/icons/image(2).png" alt="">
-      </div>
-      <div>
-        <img class="xl:w-full" src="@/assets/icons/image(3).png" alt="">
-      </div>
-      <div>
-        <img class="xl:w-full" src="@/assets/icons/image(4).png" alt="">
-      </div>
-      <div>
-        <img class="xl:w-full" src="@/assets/icons/image(5).png" alt="">
-      </div>
-      <div>
-        <img class="xl:w-full" src="@/assets/icons/image(6).png" alt="">
-      </div>
-      <div>
-        <img class="xl:w-full" src="@/assets/icons/image(7).png" alt="">
-      </div>
-      <div>
-        <img class="xl:w-full" src="@/assets/icons/image(8).png" alt="">
-      </div>
+
     </div>
   </div>
 </template>
 
 <script setup>
+import {ref} from "vue";
+
+const images = [
+  { fileName: require("@/assets/icons/image(1).png"), alt: "Image 1" },
+  { fileName: require("@/assets/icons/image.png"), alt: "Image 2" },
+  { fileName: require("@/assets/icons/image(2).png"), alt: "Image 3" },
+  { fileName: require("@/assets/icons/image(3).png"), alt: "Image 4" },
+  { fileName: require("@/assets/icons/image(4).png"), alt: "Image 5" },
+  { fileName: require("@/assets/icons/image(5).png"), alt: "Image 6" },
+  { fileName: require("@/assets/icons/image(6).png"), alt: "Image 7" },
+  { fileName: require("@/assets/icons/image(7).png"), alt: "Image 8" },
+  { fileName: require("@/assets/icons/image(8).png"), alt: "Image 9" },
+]
+const selectedImage = ref(0);
+
+const handleImageClick = (index) => {
+  selectedImage.value = index;
+};
 
 </script>
 

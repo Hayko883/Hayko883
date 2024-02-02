@@ -37,9 +37,9 @@
 
 <script setup>
 import {useUserStore} from "@/store/userStore";
+import {computed} from "vue";
 
 const userStore = useUserStore();
-import {computed} from "vue";
 
 const user = computed(() => {
   return userStore.user

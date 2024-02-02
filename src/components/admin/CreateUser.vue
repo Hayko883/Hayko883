@@ -24,9 +24,12 @@
               </div>
               <div>
                 <label for="age" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
-                <input v-model="user.role" type="number" name="age" id="age"
+                <select v-model="user.role" type="number" name="age" id="age"
                        class="bg-gray-50 border border-gray-300 hover:border-red-900 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       placeholder="11" required="">
+                        required="">
+                  <option selected value="2">Admin</option>
+                  <option value="3">User</option>
+                </select>
               </div>
               <div>
                 <label for="password"
@@ -64,7 +67,7 @@ const adminStore = useAdminStore()
 const user = ref({
   name: '',
   email: '',
-  role: 0,
+  role: null,
   password: '',
   address: ''
 
@@ -77,13 +80,7 @@ const submitForm = async ()=> {
   formData.append('password', user.value.password);
   formData.append('address', user.value.address);
 
-  console.log(formData, '0000000000')
-
-  adminStore.createUser(formData).then(() => {
-    console.log(adminStore.users,'yyyyyyyy')
-  }).catch(error => {
-    console.log(error, 'error')
-  })
+  adminStore.createUser(formData)
 }
 </script>
 

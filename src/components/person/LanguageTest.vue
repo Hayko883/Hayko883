@@ -8,7 +8,7 @@
             Please take the {{ item }} test
           </h1>
           <form @submit.prevent="submitForm" class="space-y-4 md:space-y-6" action="#" >
-            <div v-if="item" v-for="itemData in items" :key="itemData.id" class="grid grid-cols-2 items-center">
+            <div  v-for="itemData in items" :key="itemData.id" class="grid grid-cols-2 items-center">
               <label :for="itemData.id"
                      class="block mr-2 text-sm font-medium text-gray-900 dark:text-white">{{ itemData.name }}</label>
               <input v-model="percent[itemData.id]" type="number" :name="itemData.id" :id="itemData.id" min="0"
@@ -39,11 +39,13 @@ const route = useRoute()
 const item =  route.params.item
 const percentData = ref([])
 
+
 onMounted(async () => {
+    await userStore.getUser()
   if (item === "Languages"){
     await userStore.getLanguagesName();
     const percentLanguage = userStore.user.language
-
+    console.log(percentLanguage,'percentLanguage')
     const pivots = percentLanguage?.map(e => e.pivot)
     Object.values(pivots).forEach((value) => {
       percentData[value.language_id] = value.percent
