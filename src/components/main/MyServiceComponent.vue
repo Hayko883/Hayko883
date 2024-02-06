@@ -119,8 +119,8 @@
           </svg>
 
         </div>
-        <h4 class="mt-[26px] text-[18px] leading-[123.6%] font-medium text-[#2B2B2B] dark:text-white">web development</h4>
-        <p class="text-[#767676] text-[15px] mt-[15px] leading-6 dark:text-white">blog, e-commerce </p>
+        <h4 class="mt-[26px] text-[18px] leading-[123.6%] font-medium text-[#2B2B2B] dark:text-white">game design</h4>
+        <p class="text-[#767676] text-[15px] mt-[15px] leading-6 dark:text-white">Character Design, Props & Objects</p>
       </div>
       <div class="bg-white dark:bg-[#242526] text-center capitalize pt-[28px] pb-[25px]">
         <div class="flex justify-center">
@@ -134,15 +134,15 @@
           </svg>
 
         </div>
-        <h4 class="mt-[26px] text-[18px] leading-[123.6%] font-medium text-[#2B2B2B] dark:text-white">web development</h4>
-        <p class="text-[#767676] text-[15px] mt-[15px] leading-6 dark:text-white">blog, e-commerce </p>
+        <h4 class="mt-[26px] text-[18px] leading-[123.6%] font-medium text-[#2B2B2B] dark:text-white">photography</h4>
+        <p class="text-[#767676] text-[15px] mt-[15px] leading-6 dark:text-white">portrait, product photography</p>
       </div>
-      <div class="bg-white dark:bg-[#242526] text-center capitalize px-6 pt-[28px] pb-[25px]">
-        <h4 class="mt-[26px] mb-[22px] text-[18px] leading-[123.6%] font-medium text-[#2B2B2B] dark:text-white">web development</h4>
+      <div class="bg-white dark:bg-[#242526] text-center capitalize px-6 pt-[31px] pb-[25px]">
+        <h4 class="mb-[22px] text-[18px] leading-[123.6%] font-medium text-[#2B2B2B] dark:text-white">advertising</h4>
         <p class="text-[#767676] text-[15px] leading-6 dark:text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae nulla diam in ac dictum a urna viverra
           morbi.</p>
-       <div class="flex justify-center mt-[15px] items-center">
-         <p class="text-[#FFB400] text-[15px] leading-6">ORDER NOW</p>
+       <div class="flex justify-center mt-[27px] items-center">
+         <p class="text-[#FFB400] text-[12px] leading-6">ORDER NOW</p>
          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
            <g clip-path="url(#clip0_2_649)">
              <path d="M10.1431 10.0002L7.78564 7.64352L8.96398 6.46436L12.4998 10.0002L8.96398 13.536L7.78564 12.3569L10.1431 10.0002Z" fill="#FFB400"/>

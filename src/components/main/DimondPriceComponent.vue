@@ -2,8 +2,8 @@
   <div>
     <div class="bg-white dark:bg-[#242526] dark:text-white px-8 pt-[54px] pb-[25px] ">
       <div class="text-center capitalize text-[#2B2B2B] dark:text-white">
-        <h3 class="mb-[19px] font-semibold text-[24px] leading-[123.6%]">silver</h3>
-        <h2 class="text-[32px] font-bold">$0.00 <span class="text-[15px] font-normal">/hour</span></h2>
+        <h3 class="mb-[19px] font-semibold text-[24px] leading-[123.6%]">dimond</h3>
+        <h2 class="text-[32px] font-bold">$80.00 <span class="text-[15px] font-normal">/hour</span></h2>
         <p class="text-[#767676] dark:text-white mt-[9px] leading-6">For most businesses that want to optimize web queries</p>
       </div>
       <div>
@@ -40,7 +40,7 @@
             </svg>
             web development
           </li>
-          <li class="flex mb-4 text-[#767676] dark:text-white">
+          <li class="flex mb-4 dark:text-white">
             <svg class="mr-[15px]" width="25" height="24" viewBox="0 0 25 24" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_2_5126)">
@@ -56,7 +56,7 @@
             </svg>
             logo design
           </li>
-          <li class="flex mb-4 text-[#767676] dark:text-white">
+          <li class="flex mb-4 dark:text-white">
             <svg class="mr-[15px]" width="25" height="24" viewBox="0 0 25 24" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_2_5126)">
@@ -72,7 +72,7 @@
             </svg>
             seo optimization
           </li>
-          <li class="flex mb-4 text-[#767676]">
+          <li class="flex mb-4 dark:text-white">
             <svg class="mr-[15px]" width="25" height="24" viewBox="0 0 25 24" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_2_5126)">
@@ -88,7 +88,7 @@
             </svg>
             wordPress integration
           </li>
-          <li class="flex mb-4 text-[#767676]">
+          <li class="flex mb-4 dark:text-white">
             <svg class="mr-[15px]" width="25" height="24" viewBox="0 0 25 24" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_2_5126)">
@@ -104,7 +104,7 @@
             </svg>
             5 Websites
           </li>
-          <li class="flex mb-4 text-[#767676]">
+          <li class="flex mb-4 dark:text-white">
             <svg class="mr-[15px]" width="25" height="24" viewBox="0 0 25 24" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_2_5126)">
@@ -120,7 +120,7 @@
             </svg>
             unlimited user
           </li>
-          <li class="flex mb-4 text-[#767676]">
+          <li class="flex mb-4 dark:text-white">
             <svg class="mr-[15px]" width="25" height="24" viewBox="0 0 25 24" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_2_5126)">

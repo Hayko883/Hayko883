@@ -22,18 +22,10 @@
             </svg>
           </div>
         </div>
-        <div class="mt-[15px]">
-          <div class="flex justify-between ">
-            <ul class="text-lg leading-[123.6%]">
-              <li class="mt-[16px]">Country:</li>
-              <li class="mt-[16px]">City:</li>
-              <li class="mt-[16px]">Streat:</li>
-            </ul>
-            <ul class="text-[15px] leading-[123.6%] text-right grid gap-y-1 ml-[33px]">
-              <li class="mt-[14px]">Bangladesh</li>
-              <li class="mt-[14px]">Dhaka</li>
-              <li class="mt-[14px]">35 vhatara, Badda</li>
-            </ul>
+        <div v-for="info in addressInfo" class="mt-[15px]">
+          <div class="flex justify-between items-center mt-[21px]">
+            <p class="text-lg leading-[123.6%]">{{ info.name }}:</p>
+            <p class="text-[15px] leading-[123.6%]">{{ info.value }}</p>
           </div>
         </div>
       </div>
@@ -53,18 +45,10 @@
 
           </div>
         </div>
-        <div class="mt-[15px]">
-          <div class="flex justify-between ">
-            <ul class="text-lg leading-[123.6%]">
-              <li class="mt-[16px]">Email:</li>
-              <li class="mt-[16px]">Skype:</li>
-              <li class="mt-[16px]">Telegram::</li>
-            </ul>
-            <ul class="text-[15px] leading-[123.6%] text-right grid gap-y-1 ml-[33px]">
-              <li class="mt-[14px]">youremail@gmail.com</li>
-              <li class="mt-[14px]">@yourusername</li>
-              <li class="mt-[14px]">@yourusername</li>
-            </ul>
+        <div v-for="info in emailInfo" class="mt-[15px]">
+          <div class="flex justify-between items-center mt-[21px]">
+            <p class="text-lg leading-[123.6%]">{{ info.name }}:</p>
+            <p class="text-[15px] leading-[123.6%]">{{ info.value }}</p>
           </div>
         </div>
       </div>
@@ -84,19 +68,23 @@
 
           </div>
         </div>
-        <div class="mt-[15px]">
-          <div class="flex justify-between ">
-            <ul class="text-lg leading-[123.6%]">
-              <li class="mt-[16px]">Support services:</li>
-              <li class="mt-[16px]">Office:</li>
-              <li class="mt-[16px]">Personal::</li>
-            </ul>
-            <ul class="text-[15px] leading-[123.6%] text-right grid gap-y-1 pl-[33px]">
-              <li class="mt-[14px]">15369</li>
-              <li class="mt-[14px]">+58 (021)35</li>
-              <li class="mt-[14px]">+58 (021)3 235</li>
-            </ul>
+        <div v-for="info in officeInfo" class="mt-[15px]">
+          <div class="flex justify-between items-center mt-[21px]">
+            <p class="text-lg leading-[123.6%]">{{ info.name }}:</p>
+            <p class="text-[15px] leading-[123.6%]">{{ info.value }}</p>
           </div>
+<!--          <div class="flex justify-between ">-->
+<!--            <ul class="text-lg leading-[123.6%]">-->
+<!--              <li class="mt-[16px]">Support services:</li>-->
+<!--              <li class="mt-[16px]">Office:</li>-->
+<!--              <li class="mt-[16px]">Personal::</li>-->
+<!--            </ul>-->
+<!--            <ul class="text-[15px] leading-[123.6%] text-right grid gap-y-1 pl-[33px]">-->
+<!--              <li class="mt-[14px]">15369</li>-->
+<!--              <li class="mt-[14px]">+58 (021)35</li>-->
+<!--              <li class="mt-[14px]">+58 (021)3 235</li>-->
+<!--            </ul>-->
+<!--          </div>-->
         </div>
       </div>
     </div>
@@ -105,7 +93,21 @@
 </template>
 
 <script setup>
-
+const addressInfo = [
+  {name: "Country", value: "Bangladesh"},
+  {name: "City", value: "Dhaka"},
+  {name: "Street", value: "35 vhatara, Badda"}
+]
+const emailInfo = [
+  {name: "Email", value: "youremail@gmail.com"},
+  {name: "Skype", value: "@yourusername"},
+  {name: "Telegram", value: "@yourusername"}
+]
+const officeInfo = [
+  {name: "Support services", value: "15369"},
+  {name: "Office", value: "+58 (021)35"},
+  {name: "Personal", value: "+58 (021)3 235"}
+]
 </script>
 
 <style scoped>

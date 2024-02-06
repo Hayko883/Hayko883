@@ -6,7 +6,7 @@
         aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. lorem ipsum
       </p>
     </div>
-    <FragmentCertificate :count-Data="countData" :count-data-methods="{ CountData, AddEducationOrWork }"/>
+    <FragmentCertificate :key="countData" :data="countData" :url="'http://127.0.0.1:8000/api/storeEducation'"/>
   </div>
 </template>
 
@@ -35,7 +35,7 @@ onMounted(async () => {
   await userStore.getUser()
 
   const userEducation = userStore.user.education
-  if (userEducation.length > 0){
+  if (userEducation.length) {
     userEducation.forEach(e => {
       countData.value.push({
         dateValue: {
@@ -51,39 +51,8 @@ onMounted(async () => {
       })
     })
   }
-
-  console.log(userEducation,'45454545')
 })
 
-const CountData = (increment) => {
-  if (increment === 1) {
-    countData.value.push({
-      dateValue: {
-        startDate: "",
-        endDate: "",
-      },
-      certificate: "",
-      formatter: {
-        date: "MMM YYYY",
-        month: "MMM",
-      },
-      btnShow: true
-    });
-  } else if (increment === -1 && countData.value.length > 1){
-    countData.value.pop()
-  }
-};
-const AddEducationOrWork = async (data) => {
-  try {
-    const response = await axios.post("http://127.0.0.1:8000/api/storeEducation",
-        { dateValue: data.dateValue,
-          certificate: data.certificate},
-        {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}});
-    console.log(response.data);
-  } catch (error) {
-    console.error(error);
-  }
-}
 </script>
 
 <style scoped>

@@ -4,6 +4,7 @@ import App from './App.vue'
 import './assets/styles/main.css';
 import router from "./js/router"
 import axios from "axios";
+import GoogleMap from 'vue-google-maps-ui'
 import VueTailwindDatepicker from 'vue-tailwind-datepicker'
 
 
@@ -17,4 +18,4 @@ axios.interceptors.request.use(function (config) {
 const pinia = createPinia()
 createApp(App).use(router).mount('#app')
 
-createApp(App).use(pinia).use(VueTailwindDatepicker)
+createApp(App).use(pinia).use(VueTailwindDatepicker).use(GoogleMap)
